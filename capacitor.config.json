@@ -1,6 +1,6 @@
 {
-	"appId": "io.ionic.starter",
-	"appName": "appdelivery",
-	"webDir": "www",
-	"bundledWebRuntime": false
+  "appId": "com.afmv.appdelivery",
+  "appName": "appdeli",
+  "webDir": "www",
+  "bundledWebRuntime": false
 }
