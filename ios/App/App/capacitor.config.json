@@ -1,0 +1,6 @@
+{
+	"appId": "com.afmv.appdelivery",
+	"appName": "appdeli",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}

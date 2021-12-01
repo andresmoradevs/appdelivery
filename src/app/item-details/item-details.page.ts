@@ -1,67 +1,53 @@
-import { Component, OnInit } from '@angular/core';
-import { Animation, AnimationController } from '@ionic/angular';
+import { Component, Input } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Firestore, collection, doc, docData, getDoc } from '@angular/fire/firestore';
+import { firebaseApp$ } from '@angular/fire/app';
+import { DataService, Product } from '../data.service';
+import { Observable } from 'rxjs';
+import { NavController } from '@ionic/angular';
+
+
 @Component({
   selector: 'app-item-details',
   templateUrl: './item-details.page.html',
   styleUrls: ['./item-details.page.scss'],
 })
-export class ItemDetailsPage implements OnInit {
-  selectedSize: number;
-  selectedColor: number;
-  activeVariation: string;
+export class ItemDetailsPage{
+
+  productId: string;
+  productNombre: string;
+  productPrecio: string;
+  productDescripcion: string;
+  productImagen1: string;
+  productImagen2: string;
+  productImagen3: string;
+
+  @Input() id: Product;
+  products = [];
+  productSelected;
+  data: any;
+  product: Product = null;
+
+  cartText: string;
 
   constructor(
-    private animatioCntrl: AnimationController,
-  ) { }
+    public nav: NavController,
+    private firestore: Firestore,
+    private dataService: DataService,
+    private activatedRoute: ActivatedRoute
+  ) {
+    this.productId = sessionStorage.getItem('productId');
+    this.productNombre = sessionStorage.getItem('productNombre');
+    this.productPrecio = sessionStorage.getItem('productPrecio');
+    this.productDescripcion = sessionStorage.getItem('productDescripcion');
+    this.productImagen1 = sessionStorage.getItem('productImagen1');
+    this.productImagen2 = sessionStorage.getItem('productImagen2');
+    this.productImagen3 = sessionStorage.getItem('productImagen3');
 
-  ngOnInit() {
-    this.activeVariation = 'size';
+
+
   }
+  addToCart(id, nombre, precio, descripcion, imagen1, imagen2, imagen3) {
 
-  segmentChanged(e: any) {
-    this.activeVariation = e.detail.value;
-
-    if (this.activeVariation == 'color') {
-      this.animatioCntrl.create()
-      .addElement(document.querySelector('.sizes'))
-      .duration(500)
-      .iterations(1)
-      .fromTo('transform', 'translateX(0px)', 'translateX(100%)')
-      .fromTo('opacity', '1', '0.2')
-      .play();
-
-      this.animatioCntrl.create()
-      .addElement(document.querySelector('.colors'))
-      .duration(500)
-      .iterations(1)
-      .fromTo('transform', 'translateX(-100%)', 'translateX(0)')
-      .fromTo('opacity', '0.2', '1')
-      .play();
-    } else {
-      this.animatioCntrl.create()
-      .addElement(document.querySelector('.sizes'))
-      .duration(500)
-      .iterations(1)
-      .fromTo('transform', 'translateX(100%)', 'translateX(0)')
-      .fromTo('opacity', '0.2', '1')
-      .play();
-
-      this.animatioCntrl.create()
-      .addElement(document.querySelector('.colors'))
-      .duration(500)
-      .iterations(1)
-      .fromTo('transform', 'translateX(0px)', 'translateX(-100%)')
-      .fromTo('opacity', '1', '0.2')
-      .play();
-    }
   }
-
-  changeSize(size: number) {
-    this.selectedSize = size;
-  }
-
-  changeColor(color: number) {
-    this.selectedColor = color;
-  }
-
 }

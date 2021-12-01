@@ -7,9 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SignupPage implements OnInit {
 
+  public email: string;
+  public password: string;
+
   constructor() { }
 
   ngOnInit() {
   }
+ 
 
 }

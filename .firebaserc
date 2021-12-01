@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "afmvdelivery": {
+      "hosting": {
+        "app": [
+          "appdelievery"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "afmvdelivery"
+  }
+}

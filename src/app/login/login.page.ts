@@ -19,8 +19,8 @@ export class LoginPage implements OnInit {
   }
   login() {
     // Enabling Side Menu
-    this.util.setMenuState(true);
-    this.navCtrl.navigateRoot('/home', { animationDirection: 'forward' })
+    
   }
+  
 
 }

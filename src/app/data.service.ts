@@ -1,102 +1,49 @@
 import { Injectable } from '@angular/core';
+import { Firestore, collectionData, collection, docData, addDoc, doc, deleteDoc, updateDoc } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
 
-// Category Interface
-export interface ICategory {
-  id: number,
-  name: string,
-  image: string,
-}
 
-// Product Interface
-export interface IProduct {
-  id: number,
-  name: string,
-  price: number,
-  image: string,
+export interface Product {
+  id: string;
+  nombre: string;
+  precio: string;
+  imagen: any;
+  descripcion: string;
 }
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
+  productsrtDb: Observable<any[]>;
 
-  constructor() { }
+  constructor(
+    private firestore: Firestore) { }
 
-  getCategories() {
-    let categories = [];
-
-    let cat1: ICategory = {
-      id: 1,
-      name: 'Womens',
-      image: '../../assets/categories/category-1.png'
-    }
-    let cat2: ICategory = {
-      id: 2,
-      name: 'Mens',
-      image: '../../assets/categories/category-2.png'
-    }
-    let cat3: ICategory = {
-      id: 3,
-      name: 'Kids',
-      image: '../../assets/categories/category-3.png'
+    getProducts(): Observable<Product[]> {
+      const productRef = collection(this.firestore,'productos');
+      return collectionData(productRef, { idField: 'id'}) as Observable<Product[]>;
     }
 
-    categories.push(cat1, cat2, cat3);
-
-    return categories;
-  }
-
-  getFeaturedProducts() {
-    let products = [];
-
-    let prod1: IProduct = {
-      id: 1,
-      name: 'Womens T-Shirt',
-      price: 55,
-      image: '../../assets/products/prod-1.png'
-    }
-    let prod2: IProduct = {
-      id: 2,
-      name: 'Mens T-Shirt',
-      price: 34,
-      image: '../../assets/products/prod-2.png'
-    }
-    let prod3: IProduct = {
-      id: 1,
-      name: 'Womens T-Shirt',
-      price: 40,
-      image: '../../assets/products/prod-3.png'
+    getProductById(id) {
+      const productDocRef = doc(this.firestore, `productos/${id}`);
+      return docData(productDocRef, { idField: 'id' }) as Observable<Product>;
     }
 
-    products.push(prod1, prod2, prod3);
-
-    return products;
-  }
-
-  getBestSellProducts() {
-    let products = [];
-
-    let prod1: IProduct = {
-      id: 1,
-      name: 'Womens T-Shirt',
-      price: 55,
-      image: '../../assets/products/prod-4.png'
-    }
-    let prod2: IProduct = {
-      id: 2,
-      name: 'Mens T-Shirt',
-      price: 34,
-      image: '../../assets/products/prod-5.png'
-    }
-    let prod3: IProduct = {
-      id: 1,
-      name: 'Womens T-Shirt',
-      price: 40,
-      image: '../../assets/products/prod-6.png'
+    addProduct(product: Product) {
+      const productRef = collection(this.firestore,'productos');
+      return addDoc(productRef, product)
     }
 
-    products.push(prod1, prod2, prod3);
+    deleteProduct(product: Product) {
+      const productDocRef = doc(this.firestore, `productos/${product.id}`);
+      return deleteDoc(productDocRef)
+    }
+    updateProduct(product: Product) {
+      const productDocRef = doc(this.firestore, `productos/${product.id}`);
+      return updateDoc(productDocRef, { nombre: product.nombre, precio: product.precio, imagen: product.imagen, descripcion: product.descripcion })
 
-    return products;
-  }
+    }
+
+
 }

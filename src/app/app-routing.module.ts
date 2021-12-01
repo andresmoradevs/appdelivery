@@ -8,10 +8,6 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: 'folder/:id',
-    loadChildren: () => import('./folder/folder.module').then( m => m.FolderPageModule)
-  },
-  {
     path: 'menu/:id',
     loadChildren: () => import('./menu/menu.module').then( m => m.MenuPageModule)
   },
@@ -32,12 +28,36 @@ const routes: Routes = [
     loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
   },
   {
-    path: 'item-details',
+    path: 'item-details/:id',
     loadChildren: () => import('./item-details/item-details.module').then( m => m.ItemDetailsPageModule)
   },
   {
     path: 'my-cart',
     loadChildren: () => import('./my-cart/my-cart.module').then( m => m.MyCartPageModule)
+  },
+  {
+    path: 'profile',
+    loadChildren: () => import('./profile/profile.module').then( m => m.ProfilePageModule)
+  },
+  {
+    path: 'my-orders',
+    loadChildren: () => import('./my-orders/my-orders.module').then( m => m.MyOrdersPageModule)
+  },
+  {
+    path: 'favorite',
+    loadChildren: () => import('./favorite/favorite.module').then( m => m.FavoritePageModule)
+  },
+  {
+    path: 'confirm',
+    loadChildren: () => import('./confirm/confirm.module').then( m => m.ConfirmPageModule)
+  },
+  {
+    path: 'checkout',
+    loadChildren: () => import('./checkout/checkout.module').then( m => m.CheckoutPageModule)
+  },
+  {
+    path: 'all-products',
+    loadChildren: () => import('./all-products/all-products.module').then( m => m.AllProductsPageModule)
   }
 ];
 

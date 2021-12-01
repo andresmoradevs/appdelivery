@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "775297712938",
+    "project_id": "afmvdelivery",
+    "storage_bucket": "afmvdelivery.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:775297712938:android:a26bfeb54f7dc208dad453",
+        "android_client_info": {
+          "package_name": "com.afmv.appdelivery"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "775297712938-0mcc7g9j5k1f845ohms200560bj6uhj3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.afmv.appdelivery",
+            "certificate_hash": "f8d52d505550fba7d063147e0ca748a808794832"
+          }
+        },
+        {
+          "client_id": "775297712938-5ohadrt9vf57urmqd6acet8tfuoe0mlt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAaQTT_ksmkqWs4Rrq760CQug95Ta1KZqw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "775297712938-5ohadrt9vf57urmqd6acet8tfuoe0mlt.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

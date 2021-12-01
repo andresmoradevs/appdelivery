@@ -56,9 +56,11 @@
  * {
      font-family: 'SegoeUI';
  }
+ 
 
  .main-button {
-     --background: linear-gradient(90deg, rgb(141, 44, 153) 0%, rgb(252, 83, 224) 100%);
+    --border-radius: 45rem;
+     --background: linear-gradient(90deg, rgb(64, 196, 255) 0%, rgb(0, 176, 255) 100%);
      --box-shadow: none;
      position: relative;
      height: 50px;
@@ -66,6 +68,7 @@
  }
 
  .main-button::after {
+    
      content: " ";
      position: absolute;
      width: 80%;
@@ -80,6 +83,7 @@
  // Removing ion-button focus outline
 ion-button:focus {
      outline: none !important;
+     
  }
  
  ion-buttons:focus {

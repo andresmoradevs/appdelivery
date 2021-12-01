@@ -1,0 +1,31 @@
+
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start" >
+      <ion-menu-button>
+        <img src="../../assets/menu_bar.svg" />
+      </ion-menu-button>
+    </ion-buttons>
+
+    <ion-buttons slot="end">
+      <ion-button class="filter">
+        <ion-icon name="filter-outline" color="dark"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <h1 class="title">Todos los productos</h1>
+    <ion-row class="favorite-items">
+      <ion-col *ngFor="let product of products" size="6" class="ion-text-left padding-left0">
+        <!-- <img routerLink="/item-details/{{ product.id }}" [src]="product.imagen.imagen1" /> -->
+        <img (click)="viewProduct(product.id, product.nombre, product.precio, product.descripcion, product.imagen.imagen1, product.imagen.imagen2, product.imagen.imagen3)" [src]="product.imagen.imagen1" />
+
+        <p>${{ product.precio }}</p>
+        <h6> {{ product.nombre }} </h6>
+      </ion-col>
+
+
+  </ion-row>
+</ion-content>

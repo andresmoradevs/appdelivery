@@ -26,8 +26,6 @@ export class AppComponent {
 
   constructor(
     private platform: Platform,
-    // private splashScreen: SplashScreen,
-    // private statusBar: StatusBar,
     private util: UtilService,
     private router: Router,
   ) {

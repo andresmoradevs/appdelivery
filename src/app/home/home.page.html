@@ -20,7 +20,7 @@
 <ion-content>
   <div class="search ion-padding">
     <ion-item lines="none">
-      <ion-input placeholder="Busca un producto.."></ion-input>
+      <ion-input placeholder="Buscar un producto.."></ion-input>
       <ion-icon name="search-outline" slot="start"></ion-icon>
     </ion-item>
   </div>
@@ -51,7 +51,7 @@
     <ion-slides [options]="{ slidesPerView: 'auto', zoom: false, gradCursor: true }">
       <ion-slide *ngFor="let product of featuredProducts">
         <ion-col class="ion-text-left">
-          <img src="{{ product.image }}">
+          <img routerLink="/item-details" src="{{ product.image }}">
           <p>${{ product.price }}</p>
           <h6>{{ product.name }}</h6>
         </ion-col>
